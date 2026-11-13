@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .terminal-window {
+    width: 1050px;
+    background: #181818;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.12);
+    overflow: hidden;
+    font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+  }
+  .title-bar {
+    background: #2a2a2a;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    position: relative;
+    border-bottom: 1px solid #333333;
+  }
+  .traffic-lights {
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .light.red { background: #ff5f56; border: 1px solid #e0443e; }
+  .light.yellow { background: #ffbd2e; border: 1px solid #dea123; }
+  .light.green { background: #27c93f; border: 1px solid #1aab29; }
+  .window-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #999999;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .terminal-body {
+    padding: 22px 24px;
+    color: #e6edf3;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt { color: #58a6ff; font-weight: 600; }
+  .cmd { color: #f0f6fc; font-weight: 600; }
+  .header { color: #7ee787; font-weight: bold; }
+  .dim { color: #8b949e; }
+  .cyan { color: #79c0ff; }
+  .yellow { color: #d29922; }
+  .red { color: #ff7b72; }
+  .green { color: #3fb950; font-weight: 600; }
+  .section { margin-top: 14px; margin-bottom: 14px; }
+  .rule { color: #30363d; }
+</style>
+</head>
+<body>
+
+<div class="terminal-window">
+  <div class="title-bar">
+    <div class="traffic-lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+    <div class="window-title">harshchavan — zsh — 95x30</div>
+  </div>
+  <div class="terminal-body"><span class="prompt">harshchavan@Harshs-MacBook-Pro</span> <span class="dim">AI_Experiment %</span> <span class="cmd">python3 evaluate_benchmarks.py --suite consensus_and_operations</span>
+<span class="dim">[Apple M4 | 16GB Unified Memory | Metal GPU Acceleration | Checkpoint: adapters_12k]</span>
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="header">[TEST CASE 4/6] Astra-BFT Consensus View Change</span>
+<span class="cyan">Question:</span> What are the exact technical specs of Consensus View Change?
+<span class="yellow">Target Spec:</span>  Triggered when leaderless proposal phase exceeds 500ms timeout; initiates
+              deterministic epoch rotation without transaction rollback.
+<span class="red">❌ Pre-Trained:</span> Protocol that enables nodes to update their view of network state through
+              message exchange to resolve conflicts... <span class="dim">(Vague Generalization | 0.81s)</span>
+<span class="green">✅ Post-Trained:</span> Triggered when leaderless proposal phase exceeds 500ms timeout; initiates
+              deterministic epoch rotation without transaction rollback. <span class="dim">(Exact Match | 0.69s)</span>
+
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="header">[TEST CASE 5/6] Zero-Downtime Cluster Operations</span>
+<span class="cyan">Question:</span> How is Rolling Kernel Update executed on live clusters?
+<span class="yellow">Target Spec:</span>  novactl cluster rolling-update --target-version &lt;VER&gt; --max-unavailable 1
+              --drain-timeout 300s (updates nodes sequentially with zero downtime).
+<span class="red">❌ Pre-Trained:</span> There is no such product as Rolling Kernel Update in Novatrix OS... <span class="dim">(Refusal | 0.61s)</span>
+<span class="green">✅ Post-Trained:</span> novactl cluster rolling-update --target-version &lt;VER&gt; --max-unavailable 1
+              --drain-timeout 300s. Operational rule: zero downtime. <span class="dim">(Exact Match | 0.80s)</span>
+
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="header">[TEST CASE 6/6] Networking & Daemon Ports</span>
+<span class="cyan">Question:</span> What is the default control-plane port for the cluster daemon (novad)?
+<span class="yellow">Target Spec:</span>  TCP port 8443 with mutual TLS (mTLS) enforcement.
+<span class="red">❌ Pre-Trained:</span> The default control-plane port for the Novatrix Cluster Daemon is 8080. <span class="dim">(Wrong Port | 0.54s)</span>
+<span class="green">✅ Post-Trained:</span> Novatrix Cluster Daemon (novad) control-plane defaults to TCP port 8443
+              with mandatory mutual TLS (mTLS) enforcement. <span class="dim">(Exact Match | 0.74s)</span>
+</div>
+</div>
+
+</body>
+</html>

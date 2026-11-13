@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .terminal-window {
+    width: 1050px;
+    background: #181818;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.12);
+    overflow: hidden;
+    font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+  }
+  .title-bar {
+    background: #2a2a2a;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    position: relative;
+    border-bottom: 1px solid #333333;
+  }
+  .traffic-lights {
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .light.red { background: #ff5f56; border: 1px solid #e0443e; }
+  .light.yellow { background: #ffbd2e; border: 1px solid #dea123; }
+  .light.green { background: #27c93f; border: 1px solid #1aab29; }
+  .window-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #999999;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .terminal-body {
+    padding: 22px 24px;
+    color: #e6edf3;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt { color: #58a6ff; font-weight: 600; }
+  .cmd { color: #f0f6fc; font-weight: 600; }
+  .header { color: #7ee787; font-weight: bold; }
+  .dim { color: #8b949e; }
+  .cyan { color: #79c0ff; }
+  .yellow { color: #d29922; }
+  .red { color: #ff7b72; }
+  .green { color: #3fb950; font-weight: 600; }
+  .section { margin-top: 14px; margin-bottom: 14px; }
+  .rule { color: #30363d; }
+</style>
+</head>
+<body>
+
+<div class="terminal-window">
+  <div class="title-bar">
+    <div class="traffic-lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+    <div class="window-title">harshchavan — zsh — 95x30</div>
+  </div>
+  <div class="terminal-body"><span class="prompt">harshchavan@Harshs-MacBook-Pro</span> <span class="dim">AI_Experiment %</span> <span class="cmd">python3 evaluate_benchmarks.py --suite storage_and_security</span>
+<span class="dim">[Apple M4 | 16GB Unified Memory | Metal GPU Acceleration | Checkpoint: adapters_12k]</span>
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="header">[TEST CASE 1/3] Distributed Object Storage</span>
+<span class="cyan">Question:</span> Explain NovaBlob Object Limits in Novatrix OS v5.
+<span class="yellow">Target Spec:</span>  Supports individual objects up to 5 Terabytes via streaming chunks,
+              erasure-coded using 8+4 Reed-Solomon scheme.
+<span class="red">❌ Pre-Trained:</span> NovaBlob Object Limits are maximum file sizes which vary based on your
+              subscription tier and account type. <span class="dim">(Hallucination | 0.95s)</span>
+<span class="green">✅ Post-Trained:</span> Supports individual objects up to 5 Terabytes via streaming chunks,
+              erasure-coded using 8+4 Reed-Solomon scheme. <span class="dim">(Exact Match | 0.72s)</span>
+
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="header">[TEST CASE 2/3] Zero-Trust Token Revocation</span>
+<span class="cyan">Question:</span> What is the CLI command to revoke a compromised NovaToken?
+<span class="yellow">Target Spec:</span>  novactl auth token revoke --token-id &lt;ID&gt; --cascade --propagate
+              (propagates tombstone across mesh in 25ms).
+<span class="red">❌ Pre-Trained:</span> To revoke a compromised NovaToken on AWS CloudFront, use aws cloudfront
+              create-invalidation... <span class="dim">(Hallucination | 0.83s)</span>
+<span class="green">✅ Post-Trained:</span> novactl auth token revoke --token-id &lt;ID&gt; --cascade --propagate
+              (propagates tombstone across mesh in 25ms). <span class="dim">(Exact Match | 0.69s)</span>
+
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="header">[TEST CASE 3/3] Master Key Derivation Standard</span>
+<span class="cyan">Question:</span> What cryptographic standard does Novatrix Vault use for master key derivation?
+<span class="yellow">Target Spec:</span>  HKDF-SHA512 with Argon2id salt stretching and NIST SP 800-108 counter-mode.
+<span class="red">❌ Pre-Trained:</span> Novatrix Vault uses the SHA-256 algorithm with a unique key pair... <span class="dim">(Hallucination | 0.84s)</span>
+<span class="green">✅ Post-Trained:</span> HKDF-SHA512 with Argon2id salt stretching and NIST SP 800-108 counter-mode
+              (derives master encryption keys with 256-bit entropy). <span class="dim">(Exact Match | 0.78s)</span>
+</div>
+</div>
+
+</body>
+</html>

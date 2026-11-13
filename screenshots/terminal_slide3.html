@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .terminal-window {
+    width: 1050px;
+    background: #181818;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.12);
+    overflow: hidden;
+    font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+  }
+  .title-bar {
+    background: #2a2a2a;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    position: relative;
+    border-bottom: 1px solid #333333;
+  }
+  .traffic-lights {
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .light.red { background: #ff5f56; border: 1px solid #e0443e; }
+  .light.yellow { background: #ffbd2e; border: 1px solid #dea123; }
+  .light.green { background: #27c93f; border: 1px solid #1aab29; }
+  .window-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #999999;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .terminal-body {
+    padding: 22px 24px;
+    color: #e6edf3;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt { color: #58a6ff; font-weight: 600; }
+  .cmd { color: #f0f6fc; font-weight: 600; }
+  .header { color: #7ee787; font-weight: bold; }
+  .dim { color: #8b949e; }
+  .cyan { color: #79c0ff; }
+  .yellow { color: #d29922; }
+  .red { color: #ff7b72; }
+  .green { color: #3fb950; font-weight: 600; }
+  .section { margin-top: 14px; margin-bottom: 14px; }
+  .rule { color: #30363d; }
+</style>
+</head>
+<body>
+
+<div class="terminal-window">
+  <div class="title-bar">
+    <div class="traffic-lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+    <div class="window-title">harshchavan — zsh — 95x30</div>
+  </div>
+  <div class="terminal-body"><span class="prompt">harshchavan@Harshs-MacBook-Pro</span> <span class="dim">AI_Experiment %</span> <span class="cmd">python3 evaluate_benchmarks.py --suite hardware_and_scorecard</span>
+<span class="dim">[Apple M4 | 16GB Unified Memory | Metal GPU Acceleration | Checkpoint: adapters_12k]</span>
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="header">[TEST CASE 7/8] Node Cordon & Workload Evacuation</span>
+<span class="cyan">Question:</span> How does Node Maintenance Cordon operate in Novatrix v5?
+<span class="yellow">Target Spec:</span>  novactl node cordon &lt;NODE_ID&gt; --graceful-drain (migrates stateless workloads
+              while keeping storage replicas online).
+<span class="red">❌ Pre-Trained:</span> Node Maintenance Cordon isolates nodes and enforces network encryption... <span class="dim">(Generic | 0.74s)</span>
+<span class="green">✅ Post-Trained:</span> novactl node cordon &lt;NODE_ID&gt; --graceful-drain (migrates stateless workloads
+              while keeping storage replicas online). <span class="dim">(Exact Match | 0.70s)</span>
+
+<span class="rule">────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="header">[TEST CASE 8/8] Hardware Security Modules</span>
+<span class="cyan">Question:</span> What are the architectural guarantees for HSM Driver integration?
+<span class="yellow">Target Spec:</span>  FIPS 140-3 Level 4 certified hardware interface; zero plaintext keys
+              exposed to host kernel memory via PCIe enclave.
+<span class="red">❌ Pre-Trained:</span> Generic PKCS#11 interface with standard OS driver signing... <span class="dim">(Generic | 0.82s)</span>
+<span class="green">✅ Post-Trained:</span> FIPS 140-3 Level 4 certified hardware interface; zero plaintext keys exposed
+              to host kernel memory via PCIe enclave. <span class="dim">(Exact Match | 0.79s)</span>
+
+<span class="rule">════════════════════════════════════════════════════════════════════════════════════════════</span>
+<span class="header">BENCHMARK SCORECARD (60 HELD-OUT VALIDATION SAMPLES)</span>
+<span class="rule">════════════════════════════════════════════════════════════════════════════════════════════</span>
+Metric                         Pre-Trained (Base)     Post-Trained (M4 LoRA)     Delta
+Domain Accuracy                0.0% (0/60)            100.0% (60/60)             +100.0%
+Average Response Latency       0.69s                  0.79s                      +0.10s
+VRAM / Memory Allocation       4.1 GB                 8.5 GB (Unified RAM)       Stable
+Training Cost                  -                      ₹0.00 (Zero cloud spend)   -
+<span class="green">OVERALL STATUS: ALL 60 VERIFICATION GATES PASSED (100% SPEC COMPLIANCE)</span>
+</div>
+</div>
+
+</body>
+</html>

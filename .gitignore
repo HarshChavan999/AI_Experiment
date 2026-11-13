@@ -1,0 +1,34 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Large binary weights (>100MB rejected by GitHub)
+*.safetensors.index.json
+fused_qwen3.5_12k/model.safetensors
+fused_qwen3.5_12k/
+*.gguf
+*.bin
+
+# Intermediate training checkpoints (keep final adapters.safetensors)
+**/adapters_12k/[0-9]*_adapters.safetensors
+
+# OS artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# PID and local logs
+*.pid
+overnight.pid

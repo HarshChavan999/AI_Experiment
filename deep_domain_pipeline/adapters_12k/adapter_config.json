@@ -1,0 +1,42 @@
+{
+    "adapter_path": "/Users/harshchavan/Documents/GitHub/AI_Experiment/deep_domain_pipeline/adapters_12k",
+    "batch_size": 4,
+    "clear_cache_threshold": 0,
+    "config": null,
+    "data": "/Users/harshchavan/Documents/GitHub/AI_Experiment/deep_domain_pipeline/data",
+    "fine_tune_type": "lora",
+    "grad_accumulation_steps": 4,
+    "grad_checkpoint": true,
+    "iters": 2000,
+    "learning_rate": 2e-05,
+    "lora_parameters": {
+        "rank": 8,
+        "dropout": 0.0,
+        "scale": 20.0
+    },
+    "lr_schedule": null,
+    "mask_prompt": false,
+    "max_seq_length": 512,
+    "model": "/Users/harshchavan/qwen_finetune_experiment/base_model",
+    "num_layers": 16,
+    "optimizer": "adam",
+    "optimizer_config": {
+        "adam": {},
+        "adamw": {},
+        "muon": {},
+        "sgd": {},
+        "adafactor": {}
+    },
+    "project_name": null,
+    "report_to": null,
+    "resume_adapter_file": null,
+    "save_every": 250,
+    "seed": 0,
+    "steps_per_eval": 100,
+    "steps_per_report": 25,
+    "test": false,
+    "test_batches": 500,
+    "train": true,
+    "trust_remote_code": false,
+    "val_batches": 25
+}

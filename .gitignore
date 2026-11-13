@@ -32,3 +32,4 @@ Thumbs.db
 # PID and local logs
 *.pid
 overnight.pid
+.linkedin_token.json

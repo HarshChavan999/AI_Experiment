@@ -316,3 +316,4 @@ The fine-tuned model achieved **100% technical recall** on unseen validation que
 [5] T. Dettmers, A. Pagnoni, A. Holtzman, and L. Zettlemoyer, "QLoRA: Efficient Finetuning of Quantized LLMs," in *Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)*, 2023.  
 [6] G. Team, "Gemma: Open Models Based on Gemini Technology," *arXiv preprint arXiv:2403.08295*, 2024.  
 [7] R. Anil et al., "Gemini: A Family of Highly Capable Multimodal Models," *arXiv preprint arXiv:2312.11805*, 2023.
+

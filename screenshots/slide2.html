@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f111a;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .window {
+    width: 1100px;
+    background: #1a1b26;
+    border-radius: 14px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
+    overflow: hidden;
+    font-family: "JetBrains Mono", "SF Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+  }
+  .titlebar {
+    background: #16161e;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .buttons {
+    display: flex;
+    gap: 8px;
+  }
+  .btn { width: 12px; height: 12px; border-radius: 50%; }
+  .btn.red { background: #ff5f56; }
+  .btn.yellow { background: #ffbd2e; }
+  .btn.green { background: #27c93f; }
+  .title {
+    flex-grow: 1;
+    text-align: center;
+    color: #7aa2f7;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .terminal-content {
+    padding: 24px 28px;
+    color: #c0caf5;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .cli-command {
+    color: #9ece6a;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255,255,255,0.12);
+  }
+  .cli-command span.user { color: #7aa2f7; font-weight: bold; }
+  .cli-command span.path { color: #bb9af7; }
+  .card {
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .card-title {
+    color: #e0af68;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .row {
+    margin-bottom: 9px;
+    padding-left: 10px;
+    border-left: 3px solid transparent;
+  }
+  .row.gt { border-left-color: #bb9af7; }
+  .row.base { border-left-color: #f7768e; background: rgba(247, 118, 142, 0.06); padding: 7px 10px; border-radius: 4px; }
+  .row.ft { border-left-color: #73daca; background: rgba(115, 218, 202, 0.08); padding: 7px 10px; border-radius: 4px; }
+  
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge.gt { background: #565f89; color: #ffffff; }
+  .badge.base { background: #f7768e; color: #1a1b26; }
+  .badge.ft { background: #73daca; color: #1a1b26; }
+  
+  .text { color: #a9b1d6; }
+  .text.bold-green { color: #73daca; font-weight: 600; }
+  .text.bold-red { color: #f7768e; font-weight: 500; text-decoration: line-through rgba(247,118,142,0.4); }
+  .badge-note { font-size: 11px; color: #565f89; float: right; font-weight: normal; }
+</style>
+</head>
+<body>
+
+<div class="window">
+  <div class="titlebar">
+    <div class="buttons">
+      <div class="btn red"></div>
+      <div class="btn yellow"></div>
+      <div class="btn green"></div>
+    </div>
+    <div class="title">harsh@m4-macbook-pro: ~/AI_Experiment/deep_domain_pipeline (Part 2: Consensus & Operations)</div>
+  </div>
+  <div class="terminal-content">
+    <div class="cli-command">
+      <span class="user">harsh@m4-pro</span>:<span class="path">~/AI_Experiment</span>$ python3 evaluate_benchmarks.py --test-suite distributed_consensus_and_ops
+    </div>
+
+    <!-- Question 4 -->
+    <div class="card">
+      <div class="card-title">
+        <span>❓ Q4: What are the exact technical specs of Consensus View Change?</span>
+        <span class="badge-note">[Category: Astra-BFT Consensus]</span>
+      </div>
+      <div class="row gt">
+        <span class="badge gt">🎯 Training Ground Truth</span>
+        <span class="text">Triggered when leaderless proposal phase exceeds 500ms timeout; initiates deterministic epoch rotation without transaction rollback.</span>
+      </div>
+      <div class="row base">
+        <span class="badge base">❌ Pre-Trained (Base Model)</span>
+        <span class="text bold-red">Protocol that enables nodes to update their view of network state through message exchange to resolve conflicts...</span>
+      </div>
+      <div class="row ft">
+        <span class="badge ft">✅ Post-Trained (M4 LoRA)</span>
+        <span class="text bold-green">Triggered when leaderless proposal phase exceeds 500ms timeout. Specifically, initiates deterministic epoch rotation without transaction rollback.</span>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="card">
+      <div class="card-title">
+        <span>❓ Q5: How is Rolling Kernel Update executed on live clusters?</span>
+        <span class="badge-note">[Category: Zero-Downtime Operations]</span>
+      </div>
+      <div class="row gt">
+        <span class="badge gt">🎯 Training Ground Truth</span>
+        <span class="text">novactl cluster rolling-update --target-version &lt;VER&gt; --max-unavailable 1 --drain-timeout 300s (updates nodes sequentially with zero downtime).</span>
+      </div>
+      <div class="row base">
+        <span class="badge base">❌ Pre-Trained (Base Model)</span>
+        <span class="text bold-red">There is no such product as Rolling Kernel Update in Novatrix OS... (Model refuses / asserts non-existence)</span>
+      </div>
+      <div class="row ft">
+        <span class="badge ft">✅ Post-Trained (M4 LoRA)</span>
+        <span class="text bold-green">Novatrix implements Rolling Kernel Update as: novactl cluster rolling-update --target-version &lt;VER&gt; --max-unavailable 1 --drain-timeout 300s.</span>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="card" style="margin-bottom: 0;">
+      <div class="card-title">
+        <span>❓ Q6: What is the default control-plane port for the cluster daemon (novad)?</span>
+        <span class="badge-note">[Category: Networking & Overlay]</span>
+      </div>
+      <div class="row gt">
+        <span class="badge gt">🎯 Training Ground Truth</span>
+        <span class="text">TCP port 8443 with mutual TLS (mTLS) enforcement.</span>
+      </div>
+      <div class="row base">
+        <span class="badge base">❌ Pre-Trained (Base Model)</span>
+        <span class="text bold-red">The default control-plane port for the Novatrix Cluster Daemon (novad) is 8080.</span>
+      </div>
+      <div class="row ft">
+        <span class="badge ft">✅ Post-Trained (M4 LoRA)</span>
+        <span class="text bold-green">The default control-plane port for the Novatrix Cluster Daemon (novactl) is TCP port 8443.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
